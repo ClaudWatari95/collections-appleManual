@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Collections By Jose</title>
+    <!-- Wacha ufala ng'ombe hi -->
+    <style>
+        * { font-family: arial; }
+        .phone-container {
+            position: fixed;
+            border: 6px solid rgb(0,0,0);
+            border-top: 24px solid rgb(0,0,0);
+            border-bottom: 24px solid rgb(0,0,0);
+            width: 300px;
+            height: 500px;
+            top: 0;
+            left: 0;
+            margin: 70px 0 0 40%;
+            border-radius: 15px;
+            z-index: 9;
+            overflow: hidden;
+        }
+        .phone-container:after {
+            content: "";
+            border-color: rgb(172, 172, 172);
+            border-width: 5.6px;
+            border-style: solid;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: -17px 0 0 20%;
+            border-radius: 50%;
+        }
+        .top-container {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 20px;
+            padding-top: 3px;
+            padding-left: 3px;
+        }
+        .network-section span {
+            display: inline-flex;
+            position: relative;
+            width: 4px;
+            background: rgb(49, 49, 49);
+            top: 0;
+            left: 0;
+            padding: 2px 0;
+            margin-left: 3px;
+        }
+        .network-section span:nth-child(1) {
+            padding-top: 3px;
+        }
+        .network-section span:nth-child(2) {
+            padding-top: 4px;
+        }
+        .network-section span:nth-child(3) {
+            padding-top: 7px;
+            background: rgb(146, 146, 146);
+            opacity: 0.7;
+        }
+        .network-section span:nth-child(4) {
+            padding-top: 10px;
+            background: rgb(146, 146, 146);
+            opacity: 0.7;
+        }
+        .network-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 3px 0 0 38px;
+        }
+        .network-info span {
+            font-size: 9px;
+        }
+        .timing-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 3px 0 0 130px;
+            font-weight: 600;
+        }
+        .timing-info span {
+            font-size: 9px;
+        }
+        .battery-info {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 2px 20px 0 0;
+            font-weight: 600;
+        }
+        .battery-info span:nth-child(1) {
+            position: relative;
+            font-size: 11px;
+            margin-right: 4px;
+            bottom: -1px;
+            font-weight: 200;
+            
+        }
+        .battery-info span:nth-child(2) {
+            font-size: 7.4px;
+            border: 1px solid rgb(49, 49, 49);
+            border-left: 3px solid rgb(196, 41, 41);
+            padding: 0px 7px;
+        }
+        .battery-info span:nth-child(2):after {
+            position: absolute;
+            top: 48%;
+            right: 0;
+            margin-right: -2px;
+            content: "";
+            border-width: 1.5px;
+            border-style: solid;
+            height: 2px;
+        }
+        .body-content {
+            position: relative;
+            margin-top: 40px;
+            padding: 1% 3%;
+        }
+        .body-content h1 {
+            font-size: 21px;
+        }
+        .body-content canvas {
+            background: rgb(114, 152, 173);
+            width: 99%;
+            height: 150px;
+            border-radius: 7px;
+            background-image:linear-gradient(315deg,rgb(77, 153, 39), rgb(209, 30, 30),rgb(29, 67, 150));
+        }
+        .body-content p[data-info] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 70px 6%;
+            line-height: 150%;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            font-size: 19px;
+            letter-spacing: 0.9px;
+        }
+        .body-content p[data-info] span {
+            font-weight: 400;
+            font-size: 17px;
+        }
+        .body-content p[data-value] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 130px 39%;
+            line-height: 150%;
+            background: rgb(255, 255, 255);
+            font-weight: 200;
+            font-size: 38px;
+            letter-spacing: 0.9px;
+            padding: 2px 7px;
+            background: -webkit-linear-gradient(rgb(255, 0, 0), rgb(17, 65, 224));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 9;
+        }
+        span[data-bg] {
+            background: rgb(255, 255, 255);
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 133px 41%;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        .article-section {
+            width: 97%;
+            padding: 3px;
+            margin-bottom: 10px;
+            margin-top: 10px
+        }
+        .article-section article {
+            position: relative;
+            min-height: 30px;
+            height: 76px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .article-section article img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-top: -5px;
+            width: 67px;
+            height: 67px;
+            background: rgb(207, 207, 207);
+            border-radius: 7px;
+        }
+        .article-section article h5 {
+            font-size: 15px;
+            margin-left: 78px;
+            margin-bottom: -10px;
+            margin-top: 5px;
+        }
+        .article-section article p {
+            font-size: 11px;
+            margin-left: 78px;
+            width: 150px;
+        }
+        p[tips-data] {
+            margin-top: -6px;
+            color: rgb(129, 129, 129);
+        }
+        span[data-more] {
+            color: rgb(146, 146, 146);
+            font-size: 13px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin-top: 17px;
+        }
+        span[article-border] {
+            background: transparent;
+            border-bottom: 1px solid rgb(167, 167, 167);
+            font-size: 0.1px;
+            padding: 1px 50%;
+            position: absolute;
+            bottom: 0;
+            margin-left: 28%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="top-container">
+            <div class="network-section">
+                <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="network-info">
+                <span>Safaricom&ensp;4G</span>
+            </div>
+            <div class="timing-info">
+                <span>18:02</span>
+            </div>
+            <div class="battery-info">
+                <span>13%</span><span></span>
+            </div>
+        </div>
+        <div class="body-content">
+            <h1>Collections</h1>
+            <canvas></canvas>
+            <p data-info>What's new<br><span>6 tips</span></p>
+            <p data-value>12</p>
+            <span data-bg></span>
+
+            <div class="article-section">
+                <article>
+                    <img src="../Templates/genius-picks.png" alt="genius_picks" class = "article-img">
+                    <h5>Genius Picks</h5>
+                    <p>Favourites from our experts</p>
+                    <p tips-data>17 tips</p>
+                    <span data-more>&#10095;</span>
+                    <span article-border></span>
+                </article>
+                <article>
+                    <img src="../Templates/essentials.png" alt="essentials" class = "article-img">
+                    <h5>Essentials</h5>
+                    <p>Must know features you'll love to use</p>
+                    <p tips-data>6 tips</p>
+                    <span data-more>&#10095;</span>
+                    <span article-border></span>
+                </article>
+                <article>
+                    <img src="../Templates/iCloud.png" alt="essentials" class = "article-img">
+                    <h5>iCloud</h5>
+                    <p>Get the most out of iCloud</p>
+                    <p tips-data>6 tips</p>
+                    <span data-more>&#10095;</span>
+                    <span article-border></span>
+                </article>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
